@@ -41,6 +41,9 @@ server.register([
   {
     register: require('./people'),
   },
+  {
+    register: require('./groups'),
+  },
 ], (err) => {
   if (err) {
     throw err;
