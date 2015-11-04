@@ -1,0 +1,27 @@
+{
+  "name": "expense-tracker-api",
+  "version": "0.0.1",
+  "description": "API to manage persistent data for the expense tracker app.",
+  "main": "app/index.js",
+  "dependencies": {
+    "getconfig": "^2.2.0",
+    "good": "^6.4.0",
+    "good-console": "^5.1.0",
+    "hapi": "^11.0.4",
+    "mongodb": "^2.0.47"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlengstorf/expense-tracker-api.git"
+  },
+  "author": "Jason Lengstorf <jason@lengstorf.com> (@jlengstorf)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlengstorf/expense-tracker-api/issues"
+  },
+  "homepage": "https://github.com/jlengstorf/expense-tracker-api#readme"
+}
