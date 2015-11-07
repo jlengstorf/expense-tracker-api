@@ -60,6 +60,41 @@ module.exports.register = (server, options, next) => {
       },
     });
 
+    /*
+     * ## Retrieve a Person by Email
+     * TODO Make this support at least the ID field
+     */
+    server.route({
+      method: 'GET',
+      path: '/groups',
+      config: {
+        handler: (request, reply) => {
+          const collection = db.collection('groups');
+
+          console.log('GET request');
+          console.log(request.query.owner);
+
+          if (request.query.owner) {
+            collection
+              .find({ owner: request.query.owner })
+              .toArray((err, docs) => {
+                if (err) {
+                  console.log(err);
+                }
+
+                reply(err || docs);
+              });
+          } else {
+            reply({error: 'no query string'});
+          }
+        },
+      },
+    });
+
+    /*
+     * ## For Development Only
+     */
+
     // TODO Remove this
     server.route({
       method: 'GET',
@@ -90,37 +125,6 @@ module.exports.register = (server, options, next) => {
 
               reply(err || docs);
             });
-        },
-      },
-    });
-
-    /*
-     * ## Retrieve a Person by Email
-     * TODO Make this support at least the ID field
-     */
-    server.route({
-      method: 'GET',
-      path: '/groups',
-      config: {
-        handler: (request, reply) => {
-          const collection = db.collection('groups');
-
-          console.log('GET request');
-          console.log(request.query.owner);
-
-          if (request.query.owner) {
-            collection
-              .find({ owner: request.query.owner })
-              .toArray((err, docs) => {
-                if (err) {
-                  console.log(err);
-                }
-
-                reply(err || docs);
-              });
-          } else {
-            reply({error: 'no query string'});
-          }
         },
       },
     });
